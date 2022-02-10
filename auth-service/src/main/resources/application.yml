@@ -3,6 +3,8 @@ spring:
     name: auth-service
 server:
   port: 8001
+  error:
+    include-binding-errors: always
 eureka:
   client:
     service-url:

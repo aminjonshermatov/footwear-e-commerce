@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 public record UserController(UsersService usersService) {
@@ -19,7 +21,7 @@ public record UserController(UsersService usersService) {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<UserResponse> createUser(@RequestBody CreteUserDto creteUserDto) {
+    public Mono<UserResponse> createUser(@Valid @RequestBody CreteUserDto creteUserDto) {
         return usersService.createUser(creteUserDto);
     }
 }

@@ -1,6 +1,6 @@
 package com.shermatov.ecommerce.authservice.controller;
 
-import com.shermatov.ecommerce.authservice.dto.CreteUserDto;
+import com.shermatov.ecommerce.authservice.dto.RegisterUserDto;
 import com.shermatov.ecommerce.authservice.model.UserResponse;
 import com.shermatov.ecommerce.authservice.service.UsersService;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ public record UserController(UsersService usersService) {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<UserResponse> createUser(@Valid @RequestBody CreteUserDto creteUserDto) {
-        return usersService.createUser(creteUserDto);
+    public Mono<UserResponse> createUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
+        return usersService.createUser(registerUserDto);
     }
 }

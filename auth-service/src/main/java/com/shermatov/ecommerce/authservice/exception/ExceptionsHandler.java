@@ -15,14 +15,21 @@ import java.util.Map;
 public record ExceptionsHandler() {
 
     @ExceptionHandler(EmailAlreadyExistException.class)
-    public ResponseEntity<Map<String, String>> handleEmailAlreadyExistException(EmailAlreadyExistException ex) {
+    public ResponseEntity<Map<String, String>> handleEmailAlreadyExistExceptionHandler(EmailAlreadyExistException ex) {
         return ResponseEntity
                 .badRequest()
                 .body(Map.of("email", ex.getMessage()));
     }
 
+    @ExceptionHandler(CredentialsIsNotValidException.class)
+    public ResponseEntity<Map<String, String>> credentialsIsNotValidExceptionHandler(CredentialsIsNotValidException ex) {
+        return ResponseEntity
+                .badRequest()
+                .body(Map.of("login", ex.getMessage()));
+    }
+
     @ExceptionHandler(WebExchangeBindException.class)
-    public ResponseEntity<Map<String, String>> handleValidationException(WebExchangeBindException ex) {
+    public ResponseEntity<Map<String, String>> handleValidationExceptionHandler(WebExchangeBindException ex) {
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getAllErrors().forEach(error -> {
@@ -35,7 +42,7 @@ public record ExceptionsHandler() {
     }
 
     @ExceptionHandler(value = Exception.class)
-    public ResponseEntity<String> handleOtherExceptions(Exception ex) {
+    public ResponseEntity<String> handleOtherExceptionsHandler(Exception ex) {
         return ResponseEntity
                 .internalServerError()
                 .body("Server error, please try request after 2-3 minutes");

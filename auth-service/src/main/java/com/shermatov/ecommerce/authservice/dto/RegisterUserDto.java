@@ -14,14 +14,14 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Builder
 @Data
-public class CreteUserDto {
+public class RegisterUserDto {
 
     @Email(message = "E-mail is not valid")
     private String email;
 
-    @NotBlank(message = "firstName must be non empty")
-    @Size(min = 3, max = 10, message = "Length of first-name must be on range [3, 10] inclusive")
-    private String firstName;
+    @NotBlank(message = "username must be non empty")
+    @Size(min = 3, max = 10, message = "Length of username must be on range [3, 10] inclusive")
+    private String username;
 
     @Size(min = 4, max = 10, message = "Length of password must be on range [3, 10] inclusive")
     private String password;

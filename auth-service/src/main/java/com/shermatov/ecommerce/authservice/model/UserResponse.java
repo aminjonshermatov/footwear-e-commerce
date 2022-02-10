@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import reactor.core.publisher.Flux;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,5 +16,6 @@ public class UserResponse {
 
     private String userId;
     private String email;
-    private String firstName;
+    private String username;
+    private Flux<String> roles;
 }

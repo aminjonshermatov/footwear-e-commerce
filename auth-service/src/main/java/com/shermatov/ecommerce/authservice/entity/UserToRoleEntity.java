@@ -11,12 +11,11 @@ import org.springframework.data.relational.core.mapping.Table;
 @NoArgsConstructor
 @Builder
 @Data
-@Table(value = "users")
-public class UserEntity {
+@Table(value = "user_to_role")
+public class UserToRoleEntity {
 
     @Id
+    private String userToRoleId;
     private String userId;
-    private String username;
-    private String email;
-    private String password;
+    private String roleId;
 }

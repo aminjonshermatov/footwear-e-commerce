@@ -1,6 +1,6 @@
 package com.shermatov.ecommerce.authservice.repository;
 
-import com.shermatov.ecommerce.authservice.entity.UserEntity;
+import com.shermatov.ecommerce.authservice.entity.RoleEntity;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,8 +8,7 @@ import reactor.core.publisher.Mono;
 
 @Repository
 @Transactional(readOnly = true)
-public interface UserRepository extends ReactiveCrudRepository<UserEntity, String> {
+public interface RoleRepository extends ReactiveCrudRepository<RoleEntity, String> {
 
-    Mono<UserEntity> findByEmail(String email);
-    Mono<UserEntity> findByEmailAndPassword(String email, String passwordEncoded);
+    Mono<RoleEntity> findByRoleName(String roleName);
 }

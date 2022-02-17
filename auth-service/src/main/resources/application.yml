@@ -1,11 +1,24 @@
 spring:
   application:
     name: auth-service
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/authdb
+    username: { DB_USERNAME:ecommerce }
+    password: { DB_PASSWORD:ecommerce }
+    pool:
+      enabled: true
+      initial-size: 50
+      max-size: 100
 server:
-  port: 8001
+  port: { SERVER_PORT:8011 }
   error:
     include-binding-errors: always
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: { EUREKA_URL:http://localhost:8761/eureka }
+logging:
+  level:
+    org:
+      springframework:
+        r2dbc: DEBUG

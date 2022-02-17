@@ -36,3 +36,5 @@ hs_err_pid*
 *.iws
 *.iml
 *.ipr
+
+postgres-data/
